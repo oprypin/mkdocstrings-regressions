@@ -75,7 +75,7 @@ build_current() {
 
 upgrade_mkdocstrings() {
     repos/$1/venv/bin/python -m pip uninstall -y mkdocstrings
-    [ ! -e ./mkdocstrings ] && git clone https://github.com/pawamoy/mkdocstrings --depth=1
+    [ ! -e ./mkdocstrings ] && git clone https://github.com/oprypin/mkdocstrings -b anylink --depth=1
     repos/$1/venv/bin/python -m pip install ./mkdocstrings
 }
 
