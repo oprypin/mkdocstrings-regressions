@@ -8,6 +8,12 @@ import bs4
 path = pathlib.Path(sys.argv[1])
 
 soup = bs4.BeautifulSoup(path.read_text(), features="html.parser")
+for el in soup.select(".hidden-toc"):
+    el.replace_with(soup.new_tag("a", id=el["id"]))
+for el in soup.select("link", {"href": "assets/_mkdocstrings.css"}):
+    el.replaceWithChildren()
+for el in soup.select("div", {"class": "codehilite"}):
+    el["class"] = "highlight"
 html = soup.prettify()
 
 html = re.sub(r'\b(0x)[a-f0-9]+\b', r'\1...', html)
