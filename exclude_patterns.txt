@@ -1,2 +1,3 @@
 sitemap.xml.gz
 search_index.json
+_mkdocstrings.css
